@@ -1,0 +1,71 @@
+/* 
+기본 : class="button"
+길이 : class"button long", middle, short
+색반전(취소버튼) : button_reverse
+*/
+
+/* 
+  background-image: 
+  background-size:
+  별도 지정
+*/
+.imgButton {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  outline: none;
+  border: none;
+  width: 44px;
+  height: 44px;
+  transition-duration: 200ms;
+}
+
+.imgButton:hover {
+  cursor: pointer;
+}
+
+.button {
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #da2337;
+  color: #ffffff;
+  outline: none;
+  border: none;
+  height: 40px;
+  border-radius: 20px;
+}
+.text-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.button_reverse {
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #ffffff;
+  border: 2px solid #da2337;
+  color: #da2337;
+  outline: none;
+  height: 40px;
+  border-radius: 20px;
+  width: 97px;
+}
+
+/* button:hover {
+  background-color: #a81f2b;
+} */
+
+.long {
+  width: 283px;
+}
+.middle {
+  width: 131px;
+}
+.short {
+  width: 97px;
+}

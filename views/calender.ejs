@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calender</title>
+    <link rel="stylesheet" href="/static/css/reset.css" />
+    <link rel="stylesheet" href="/static/css/navbar.css" />
+    <link rel="stylesheet" href="/static/css/calender.css" />
+    <link rel="stylesheet" href="/static/css/button.css" />
+    <link rel="stylesheet" href="/static/css/todoItem.css" />
+    <link rel="stylesheet" href="/static/css/alert.css" />
+    <link rel="icon" href="/static/img/faviconPomo.png">
+    <!-- axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/static/js/navbar.js"></script>
+    <script src="/static/js/calender.js"></script>
+  </head>
+  <body>
+    <header>
+      <%- include("./shared/navbar") %>
+      <a href="/" class="logo"
+        ><img width="158" src="/static/img/logo.png" alt="로고 이미지"
+      /></a>
+    </header>
+    <main>
+      <section class="calender">
+        <div>
+          <span id="year"><%= year %>년</span>
+        </div>
+        <div>
+          <button class="imgButton leftbutton minusmonth">
+            <span class="text-hidden">왼쪽 이동 버튼</span>
+          </button>
+          <span id="month"><%= month %>월</span>
+          <button class="imgButton rightbutton plusmonth">
+            <span class="text-hidden">오른쪽 이동 버튼</span>
+          </button>
+        </div>
+        <div>
+          <button class="imgButton leftbutton minusDays">
+            <span class="text-hidden">왼쪽 이동 버튼</span>
+          </button>
+          <div class="dayContainer">
+            <ul class="dayList">
+              <li class="daychar">일</li>
+              <li class="daychar">월</li>
+              <li class="daychar">화</li>
+              <li class="daychar">수</li>
+              <li class="daychar">목</li>
+              <li class="daychar">금</li>
+              <li class="daychar">토</li>
+              <% for( let index = 0; index < firstDayOfMonth; index++ ) { %>
+              <li class="emptyBlock"></li>
+              <% } %> <% for( let index = 1; index <= lastDay; index++ ) { %>
+              <%-include("./shared/dayItem", {day: dayNames[(firstDayOfMonth +
+              index - 1) % 7] , date: `${index}`}) %> <% } %>
+            </ul>
+          </div>
+          <button class="imgButton rightbutton plusDays">
+            <span class="text-hidden">오른쪽 이동 버튼</span>
+          </button>
+        </div>
+      </section>
+      <%- include('./shared/list-Wrap') %>
+    </main>
+  </body>
+</html>

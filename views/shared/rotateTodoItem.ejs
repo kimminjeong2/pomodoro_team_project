@@ -1,0 +1,21 @@
+<% for( let i = 0; i < titles.length; i++ ) { %>
+<div class="todoItem" data-id="<%= todoid[i] %>">
+  <div>
+    <button type="button" class="imgButton state <%= state[i] %>">
+      <span class="text-hidden">상태 표시 버튼</span>
+    </button>
+    <div>
+      <h3><%= titles[i] %></h3>
+      <p><%= description[i] %></p>
+    </div>
+  </div>
+  <form class="buttonform">
+    <button type="button" class="imgButton modify">
+      <span class="text-hidden">수정 버튼</span>
+    </button>
+    <button type="button" class="imgButton delete">
+      <span class="text-hidden">삭제 버튼</span>
+    </button>
+  </form>
+</div>
+<% } %>

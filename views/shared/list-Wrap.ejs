@@ -1,0 +1,40 @@
+<section class="list-Wrap">
+  <section class="todayTomato">
+    오늘 수집한 토마토
+    <p>+<span id = "tomatoCount"></span></p>
+  </section>
+  <section class="todo-container">
+    <%-include("./rotateTodoItem", {titles: titles, description:description,
+    todoid: todoid, state: state}) %>
+  </section>
+
+  <button class="imgButton addTodo">
+    <span class="text-hidden">일정 추가 버튼</span>
+  </button>
+
+  <!-- 일정 추가 양식 -->
+  <section class="addList">
+    <button class="imgButton addListClose">
+      <span class="text-hidden">닫기 버튼</span>
+    </button>
+    <h2>일정 추가</h2>
+    <form name="todoform">
+      <label for="title">주제</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        placeholder="공부할 주제를 입력해 주세요"
+      />
+      <label for="description">세부 내용</label>
+      <textarea
+        type="text"
+        placeholder="세부 내용을 입력해 주세요"
+        name="description"
+        id="description"
+      ></textarea
+      ><br />
+      <button type="button" class="button middle addListButton">추가</button>
+    </form>
+  </section>
+</section>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <link rel="stylesheet" href="/static/css/reset.css" />
+    <link rel="stylesheet" href="/static/css/register.css" />
+</head>
+
+<body>
+    <div class="logoSz">
+        <a href="/">
+            <img style="width: 100%; height: 100%" src="../static/img/titleLogo.png" alt="" />
+        </a>
+    </div>
+    <form action="/login/register" method="POST" id="registerForm">
+
+        <div class="inD"><input type="text" class="username" name="username" required placeholder="이름을 입력해 주세요" /></div>
+
+        <div class="inD">
+            <input type="text" class="emailAddr" name="emailAddr" required placeholder="이메일을 입력해 주세요" />
+            <span id="emailAddrError" class="error-text">존재하는 이메일이 있습니다</span>
+        </div>
+
+        <div class="inD"><input type="password" class="password" name="password" required placeholder="비밀번호를 입력해 주세요" />
+        </div>
+
+        <div class="inD">
+            <input type="password" class="password_confirm" name="password_confirm" required
+                placeholder="비밀번호를 한번더 입력해 주세요" />
+            <span id="password_confirmError" class="error-text">비밀번호를 확인해 주세요</span>
+
+        </div>
+        <div class="inD">
+            <input type="text" class="nickname" name="nickname" required placeholder="닉네임을 입력해 주세요" />
+            <span id="nicknameError" class="error-text">존재하는 닉네임이 있습니다</span>
+        </div>
+
+        <div class="inD">
+            <input type="number" class="phoneNumber" name="phoneNumber" required placeholder="전화번호를 입력해 주세요" />
+            <span id="phoneNumberError" class="error-text">존재하는 전화번호가 있습니다</span>
+        </div>
+
+        <div class="inD"><button class="loginBt" type="submit">회원가입</button></div>
+    </form>
+
+    <div id="successModal">
+        <div class="modal">
+            <h2>회원가입 완료!</h2>
+            <p>sss</p>
+            <div class="modalBtBox">
+                <button class="modalOffBt"><a href="/login">완료</a></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="isUser">
+        <p style="font-size: 11px">이미 계정이 있으신가요?</p>
+        <a class="lostEp" href="/login">로그인</a>
+    </div>
+
+    <script src="../static/js/register.js"></script>
+</body>
+
+</html>

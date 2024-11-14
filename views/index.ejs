@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro</title>
+    <link rel="stylesheet" href="/static/css/reset.css" />
+    <link rel="stylesheet" href="/static/css/navbar.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/todoItem.css" />
+    <link rel="stylesheet" href="/static//css/button.css" />
+    <link rel="icon" href="/static/img/faviconPomo.png">
+    <!-- toastr CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/static/js/navbar.js"></script>
+    <script src="/static/js/index.js" defer></script>
+    <script src="/static/js/FeedInfo.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <!-- axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <%- include("./shared/navbar"), {profileImg: profileImg} %>
+      <a href="/" class="logo"
+        ><img width="158" src="/static/img/logo.png" alt="로고 이미지"
+      /></a>
+    </header>
+
+    <main>
+      <%- include("./shared/feedItem"), {feeds: feeds, profileImg:profileImg} %>
+      <!-- 댓글 입력창 -->
+      <div class="comment-box" id="commentBox">
+        <div id="commentsContainer" class="comments-container"></div>
+        <div class="input-container">
+          <span class="profile-img">
+            <img src="<%= profileImg %>" alt="프로필 이미지" width="30px" />
+          </span>
+          <strong class="comment-nickname"><%= nickname %></strong>
+          <input
+            type="text"
+            id="commentInput"
+            placeholder="댓글을 입력하세요."
+          />
+          <button onclick="submitComment()" class="send-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-send"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- 피드 올리는 아이콘 -->
+      <div class="plus-icon">
+        <img
+          src="../static/svg/plus-circle-fill.svg"
+          alt="피드 올리는 아이콘"
+          onclick="goToFeed()"
+        />
+      </div>
+    </main>
+  </body>
+</html>

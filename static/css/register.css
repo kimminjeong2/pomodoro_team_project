@@ -1,0 +1,234 @@
+/* 폰트 설정 */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+html {
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  font-family: "Noto Sans KR", serif;
+  font-weight: 500;
+  background-color: #fff8f0;
+  background-color: #fff8f0;
+}
+
+div {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+h1 {
+  text-align: center;
+  margin-top: 20%;
+}
+
+.logoSz {
+  width: 156px;
+  height: 164px;
+  margin-top: 5%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+#registerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3%;
+}
+
+input {
+  background-color: #f0f0f0;
+  border-width: 0;
+  width: 283px;
+  height: 40px;
+  border-radius: 30px;
+  box-sizing: border-box;
+  padding-left: 25px;
+}
+
+.inD {
+  width: 283px;
+  height: 55px;
+  display: flex;
+  flex-direction: column;
+}
+
+input::placeholder {
+  opacity: 0.7;
+  font-weight: 400;
+  color: #b2b2b2;
+  padding-left: 30px;
+  background-position: center left 3px;
+  background-repeat: no-repeat;
+}
+
+.username::placeholder {
+  background-image: url("/static/svg/person-vcard.svg");
+}
+
+.emailAddr::placeholder {
+  background-image: url("/static/svg/envelope-fill.svg");
+}
+
+.password::placeholder {
+  background-image: url("/static/svg/lock-fill.svg");
+}
+
+.password_confirm::placeholder {
+  background-image: url("/static/svg/lock-fill.svg");
+}
+
+.nickname::placeholder {
+  background-image: url("/static/svg/person-fill.svg");
+}
+
+.phoneNumber::placeholder {
+  background-image: url("/static/svg/telephone-fill.svg");
+}
+
+.loginBt {
+  background-color: #da2337;
+  border-width: 0;
+  width: 283px;
+  height: 40px;
+  margin-top: 6%;
+  border-radius: 30px;
+
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+}
+
+.isUser {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.lostEp {
+  color: black;
+  text-decoration: none;
+  font-weight: 900;
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+#successModal {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 55%;
+  background-color: #fbfbfb;
+  /* box-shadow: 3px 3px 3px 3px rgba(34, 36, 38, 0.15); */
+  box-shadow: 0px 1px 4px #adb5bd;
+  z-index: 999;
+  border-radius: 15px;
+}
+
+.modal {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  height: 100%;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+}
+
+.modal h2 {
+  margin-bottom: 20%;
+  font-size: x-large;
+}
+
+.modal p {
+  margin-bottom: 70%;
+}
+
+.modalBtBox {
+  display: flex;
+  margin-top: 5%;
+  justify-content: center;
+}
+.modalOffBt {
+  background-color: #da2337;
+  border-width: 0;
+
+  border-radius: 30px;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+
+  width: 197px;
+  height: 45px;
+}
+
+/* .modalBt {
+  background-color: #ffffff;
+  border: 3px solid #da2337;
+  border-radius: 30px;
+  font-weight: 900;
+  color: #da2337;
+  text-align: center;
+
+  width: 97px;
+  height: 40px;
+  margin-left: 4%;
+} */
+
+/* .d-none {
+  display: none;
+} */
+
+/* unique 값이 중복되었을 때 error-text의 스타일 */
+.error-text {
+  color: red;
+  font-size: 12px;
+  display: none; /*기본적으로 숨김처리 */
+}
+
+.error-text.show {
+  display: block; /* 오류 발생 시 표시 */
+}
+
+@media (max-width: 767px) and (min-width: 375px) {
+  #successModal {
+    width: 60%;
+    height: 75%;
+  }
+  .modal h2 {
+    margin-bottom: 10%;
+  }
+  .modal p {
+    margin-bottom: 65%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #successModal {
+    width: 35%;
+    height: 80%;
+  }
+
+  .modal h2 {
+    margin-bottom: 10%;
+  }
+  .modal p {
+    margin-bottom: 65%;
+  }
+}

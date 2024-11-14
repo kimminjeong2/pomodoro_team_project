@@ -1,0 +1,69 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #fef8f1;
+  position: relative;
+  overflow: hidden;
+}
+
+.titleLogo {
+  position: relative;
+  z-index: 1;
+}
+
+.circle {
+  position: absolute;
+  background-color: #f1e9e0;
+  border-radius: 50%;
+  z-index: 0;
+  transition-duration: 2s;
+  animation: grow 2s ease-in-out infinite;
+}
+
+.circle1 {
+  width: 120px;
+  height: 120px;
+  top: -7%;
+  left: -15%;
+}
+
+.circle2 {
+  width: 130px;
+  height: 130px;
+  top: 12%;
+  left: 76%;
+}
+
+.circle3 {
+  width: 40px;
+  height: 40px;
+  top: 30%;
+  left: 12%;
+}
+
+.circle4 {
+  width: 42px;
+  height: 42px;
+  top: 60%;
+  left: 80%;
+}
+
+.circle5 {
+  width: 110px;
+  height: 110px;
+  top: 80%;
+  left: 1.5%;
+}
+@keyframes grow {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2); /* 원하는 크기까지 확대 */
+    opacity: 1; /* 중간에서 반투명 효과 */
+  }
+}

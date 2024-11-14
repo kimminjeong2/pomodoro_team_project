@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>timer</title>
+    <link rel="stylesheet" href="/static/css/reset.css" />
+    <link rel="stylesheet" href="/static/css/navbar.css" />
+    <link rel="stylesheet" href="/static/css/timer.css" />
+    <link rel="stylesheet" href="/static/css/button.css" />
+    <link rel="stylesheet" href="/static/css/calender.css" />
+    <link rel="stylesheet" href="/static/css/todoItem.css" />
+    <link rel="stylesheet" href="/static/css/alert.css" />
+    <link rel="icon" href="/static/img/faviconPomo.png" />
+    <!-- axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/static/js/navbar.js"></script>
+    <script src="/static/js/timer.js"></script>
+  </head>
+  <body>
+    <header>
+      <%- include("./shared/navbar") %>
+      <a href="/" class="logo"
+        ><img width="158" src="/static/img/logo.png" alt="로고 이미지"
+      /></a>
+    </header>
+
+    <div id="rightBtn" onclick="toggleRight()" style="height: 50vh">
+      <!-- 오른쪽 이동 버튼 -->
+      <svg
+        id="rightIcon"
+        xmlns="http://www.w3.org/2000/svg"
+        class="right"
+        width="30"
+        height="30"
+        fill="#473234"
+        class="bi bi-caret-right-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+        />
+      </svg>
+
+      <!-- 토마토 이미지 -->
+      <img
+        width="158"
+        src="/static/img/timerTomato.png"
+        alt="토마토 이미지"
+        class="timerTomato"
+      />
+
+      <!-- 그냥 타이머 -->
+      <div class="outer-timer-container">
+        <div id="main-timer" class="timer-body">
+          <div class="inner-cover1"></div>
+          <div id="tick-marks">
+            <div class="tick thick-tick"></div>
+          </div>
+          <div id="time-fins"></div>
+          <div class="inner-cover2"></div>
+        </div>
+      </div>
+
+      <!-- 왼쪽 화살표 -->
+      <svg
+        id="leftIcon"
+        xmlns="http://www.w3.org/2000/svg"
+        class="left"
+        width="30"
+        height="30"
+        fill="#473234"
+        class="bi bi-caret-left-fill"
+        viewBox="0 0 16 16"
+        style="display: none"
+      >
+        <path
+          d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+        />
+      </svg>
+    </div>
+
+    <div class="timercontainer">
+      <div id="timer" class="timer"></div>
+      <div class="buttonbox">
+        <button class="stopWatch-btn" id="startBtn" onclick="togglePlayPause()">
+          <svg
+            id="playIcon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="35px"
+            height="35px"
+            fill="#473234"
+            class="bi bi-play-circle"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+            />
+            <path
+              d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445"
+            />
+          </svg>
+          <svg
+            id="pauseIcon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="35px"
+            height="35px"
+            fill="#473234"
+            class="bi bi-pause-circle"
+            viewBox="0 0 16 16"
+            style="display: none"
+          >
+            <path
+              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+            />
+            <path
+              d="M5 6.25a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0zm3.5 0a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0z"
+            />
+          </svg>
+        </button>
+        <button class="stopWatch-btn" id="stopBtn" onclick="stopTimer()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35px"
+            height="35px"
+            fill="#473234"
+            class="bi bi-stop-circle-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.5 5A1.5 1.5 0 0 0 5 6.5v3A1.5 1.5 0 0 0 6.5 11h3A1.5 1.5 0 0 0 11 9.5v-3A1.5 1.5 0 0 0 9.5 5z"
+            />
+          </svg>
+        </button>
+        <button class="stopWatch-btn" id="resetBtn" onclick="resetTimer()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35px"
+            height="35px"
+            fill="#473234"
+            class="bi bi-arrow-counterclockwise"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"
+            />
+            <path
+              d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <%- include("./shared/list-Wrap"), {titles: titles, description:
+    description, todoid: todoid, state: state} %>
+
+    <!-- 이건 5분 휴식으로 변할때, 뒤에 스포트 라이트 -->
+    <div class="spotlight"></div>
+
+    <div id="restModal">
+      <div class="restmodal">
+        <h2>25분이 지났습니다!</h2>
+        <p>5분 휴식을 시작할까요?</p>
+        <br />
+        <button class="restend">종료</button>
+        <button class="restok">확인</button>
+      </div>
+    </div>
+    <div id="restendModal">
+      <div class="restendmodal">
+        <h2>5분 휴식이 끝났습니다!</h2>
+        <p>공부를 다시 시작 할까요?</p>
+        <br />
+        <button class="resttheend">종료</button>
+        <button class="resttheok">확인</button>
+      </div>
+    </div>
+    <div id="stopModal">
+      <div class="stopmodal">
+        <h2>정말로 중단하시겠습니까?</h2>
+        <p>타이머가 종료되며 결과가 합산됩니다.</p>
+        <br />
+        <button class="stopend">취소</button>
+        <button class="stopok">확인</button>
+      </div>
+    </div>
+    <div id="doneModal">
+      <div class="donemodal">
+        <h2>수고하셨습니다!</h2>
+        <div id="timer" class="timer"></div>
+        <section class="todayTomato">
+          획득한 토마토
+          <p>+<span id="sumTomatoCount"></span></p>
+        </section>
+        <section class="todayresult">오늘의 성과</section>
+        <section class="improvement">추가 개선이 필요한 업무</section>
+        <section class="RemainingWork">남은 업무</section>
+        <br />
+        <button class="donedone" onclick="gomyPage()">완료</button>
+      </div>
+    </div>
+
+    <script>
+      // 오른쪽 왼쪽 아이콘 토글
+      function toggleRight() {
+        const rightIcon = document.getElementById("rightIcon");
+        const leftIcon = document.getElementById("leftIcon");
+        const timerTomato = document.querySelector(".timerTomato");
+        const outerTimerContainer = document.querySelector(
+          ".outer-timer-container"
+        );
+        const playIcon = document.getElementById("playIcon");
+        const pauseIcon = document.getElementById("pauseIcon");
+        const isHidden = timerTomato.classList.contains("hide");
+        if (isHidden) {
+          rightIcon.style.display = "block";
+          leftIcon.style.display = "none";
+          timerTomato.classList.remove("hide");
+          outerTimerContainer.classList.remove("active");
+          timeRemaining = 25 * 60;
+        } else {
+          rightIcon.style.display = "none";
+          leftIcon.style.display = "block";
+          timerTomato.classList.add("hide");
+          outerTimerContainer.classList.add("active");
+          timeRemaining = 0;
+        }
+        playIcon.style.display = "block";
+        pauseIcon.style.display = "none";
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+        updateDisplay();
+      }
+
+      // 타이머 버튼 실행
+      let timerInterval;
+      let timeRemaining;
+      const timerDisplay = document.getElementById("timer");
+      let isTimerRunning = false;
+
+      // 타이머 업데이트
+      function updateDisplay() {
+        const hours = String(Math.floor(timeRemaining / 3600)).padStart(2, "0");
+        const minutes = String(
+          Math.floor((timeRemaining % 3600) / 60)
+        ).padStart(2, "0");
+        const seconds = String(timeRemaining % 60).padStart(2, "0");
+        timerDisplay.textContent = `${hours} : ${minutes} : ${seconds}`;
+      }
+      // 타이머 시작
+      function startTimer() {
+        if (isTimerRunning) return;
+        isTimerRunning = true;
+        timerInterval = setInterval(() => {
+          if (
+            timeRemaining > 0 &&
+            !document.querySelector(".timerTomato").classList.contains("hide")
+          ) {
+            timeRemaining--;
+          } else if (
+            timeRemaining <= 0 &&
+            !document.querySelector(".timerTomato").classList.contains("hide")
+          ) {
+            showRestModal();
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+          } else {
+            timeRemaining++;
+          }
+          updateDisplay();
+        }, 1000);
+      }
+
+      // 25분 타이머 종료 후 알람창
+      function showRestModal() {
+        const restModal = document.getElementById("restModal");
+        restModal.style.display = "flex";
+        document.querySelector(".restok").onclick = () => {
+          restModal.style.display = "none";
+          startRestTimer();
+        };
+        document.querySelector(".restend").onclick = () => {
+          restModal.style.display = "none";
+          stopTimer();
+        };
+      }
+
+      // 5분 휴식 타이머 시작
+      function startRestTimer() {
+        clearInterval(timerInterval); // 기존 타이머 중지
+        timeRemaining = 5 * 60;
+        updateDisplay();
+        startRestPeriod();
+        isTimerRunning = true;
+        timerInterval = setInterval(() => {
+          if (timeRemaining > 0) {
+            timeRemaining--;
+            updateDisplay();
+          } else {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            showRestEndModal(); // 5분 휴식 종료 후 알람 표시
+          }
+        }, 1000);
+      }
+
+      // 5분 휴식 종료 후 알람
+      function showRestEndModal() {
+        const restModal = document.getElementById("restModal");
+        if (restModal.style.display === "flex")
+          restModal.style.display = "none"; // 다른 알람이 뜨지 않도록 설정
+        const restendModal = document.getElementById("restendModal");
+        restendModal.style.display = "flex";
+        // '종료' 버튼 클릭 시
+        document.querySelector(".resttheend").onclick = () => {
+          restendModal.style.display = "none";
+          resetTimerTo25();
+        };
+
+        // '확인' 버튼 클릭 시 타이머 재시작
+        document.querySelector(".resttheok").onclick = () => {
+          restendModal.style.display = "none";
+          timeRemaining = 25 * 60;
+          updateDisplay();
+          startTimer();
+        };
+      }
+      // 타이머 25분 초기화
+      function resetTimerTo25() {
+        clearInterval(timerInterval);
+        timeRemaining = 25 * 60;
+        updateDisplay();
+        isTimerRunning = false;
+      }
+
+      // 5분 휴식 중 스타일 변경
+      function startRestPeriod() {
+        document.body.style.backgroundColor = "#654f76";
+        document.querySelector("header").style.backgroundColor = "#473c52";
+        document.querySelector(".timer").style.color = "#fff";
+
+        const logoImage = document.querySelector(".logo img");
+        if (logoImage) logoImage.src = "/static/img/logo2.png";
+
+        document
+          .querySelectorAll(".buttonbox svg, #rightBtn svg")
+          .forEach((icon) => {
+            icon.style.fill = "#fff";
+          });
+
+        const spotlight = document.querySelector(".spotlight");
+        if (spotlight) spotlight.style.display = "block";
+
+        // 5분 후 원래 상태로 되돌리기
+        setTimeout(() => {
+          document.body.style.backgroundColor = "#fef8f1";
+          document.querySelector("header").style.backgroundColor = "#f2eae0";
+          document.querySelector(".timer").style.color = "#473234";
+          if (logoImage) logoImage.src = "/static/img/logo.png";
+
+          document
+            .querySelectorAll(".buttonbox svg, #rightBtn svg")
+            .forEach((icon) => {
+              icon.style.fill = "#473234";
+            });
+
+          if (spotlight) spotlight.style.display = "none";
+        }, 5 * 60 * 1000);
+      }
+
+      // 타이머 일시정지
+      function pauseTimer() {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+      }
+
+      // 타이머 중지
+      function stopTimer() {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+        const stopModal = document.getElementById("stopModal");
+        stopModal.style.display = "flex";
+        document.querySelector(".stopok").onclick = () => {
+          stopModal.style.display = "none";
+          // timeRemaining = timerTomato.classList.contains("hide") ? 0 : 1 * 60;
+          // updateDisplay();
+          document.getElementById("doneModal").style.display = "flex";
+        };
+        document.querySelector(".stopend").onclick = () => {
+          stopModal.style.display = "none";
+        };
+      }
+
+      // 타이머 초기화
+      function resetTimer() {
+        clearInterval(timerInterval);
+
+        if (
+          !document.querySelector(".timerTomato").classList.contains("hide")
+        ) {
+          timeRemaining = 25 * 60;
+        } else {
+          timeRemaining = 0;
+        }
+        updateDisplay();
+      }
+
+      // 타이머 시작/일시정지 토글
+      function togglePlayPause() {
+        const playIcon = document.getElementById("playIcon");
+        const pauseIcon = document.getElementById("pauseIcon");
+
+        if (playIcon.style.display === "none") {
+          playIcon.style.display = "block";
+          pauseIcon.style.display = "none";
+          pauseTimer();
+        } else {
+          playIcon.style.display = "none";
+          pauseIcon.style.display = "block";
+          startTimer();
+        }
+      }
+
+      // 초기 설정
+      timeRemaining = 25 * 60;
+      updateDisplay();
+
+      // 그냥 타이머
+      document.addEventListener("DOMContentLoaded", () => {
+        const timer = document.getElementById("main-timer");
+        const lines = timer.querySelector("#tick-marks");
+        const fins = timer.querySelector("#time-fins");
+        const control = document.querySelector(
+          ".control-container #play-pause-control"
+        );
+
+        const endTime = 60;
+        let intervalID = null;
+        let progressTimeSec = 0;
+        let isPlay = true;
+
+        function paintTickMarks() {
+          for (let i = 0; i < 30; i++) {
+            if (i % 5 === 0) {
+              const tick = document.createElement("div");
+              tick.classList.add("tick", "thick-tick");
+              tick.style.transform = `rotate(${i * 6}deg)`;
+              lines.append(tick);
+            }
+          }
+        }
+
+        function paintRemainingTime() {
+          for (let min = 0; min < endTime; min++) {
+            for (let sec = 0; sec < 60; sec++) {
+              const remainFin = document.createElement("div");
+              remainFin.classList.add("fin");
+              const deg = min * 6 + sec * 0.1;
+              remainFin.style.transform = `rotate(${-deg}deg)`;
+              fins.append(remainFin);
+            }
+          }
+        }
+
+        function tickSecond() {
+          progressTimeSec++;
+          if (progressTimeSec >= endTime * 60) pause();
+          const lastFin = fins.lastChild;
+          if (lastFin) {
+            lastFin.remove();
+          }
+        }
+
+        function play() {
+          intervalID = setInterval(tickSecond, 1000);
+          isPlay = true;
+          if (control) {
+            control.innerHTML = `<i class="fas fa-pause"></i>`;
+          }
+        }
+
+        function pause() {
+          clearInterval(intervalID);
+          isPlay = false;
+          if (control) {
+            control.innerHTML = `<i class="fas fa-play"></i>`;
+          }
+        }
+
+        function toggleControl() {
+          if (isPlay) {
+            pause();
+          } else {
+            play();
+          }
+        }
+
+        if (lines) {
+          paintTickMarks();
+        }
+
+        if (fins) {
+          paintRemainingTime();
+        }
+
+        if (control) {
+          control.addEventListener("click", toggleControl);
+        }
+
+        play();
+      });
+      // 완료 버튼 누르면 마이페이지로 이동
+      function gomyPage() {
+        window.location.href = "./myPage";
+      }
+    </script>
+  </body>
+</html>

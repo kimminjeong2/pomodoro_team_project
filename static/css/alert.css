@@ -1,0 +1,79 @@
+.cumtomAlert {
+  position: fixed;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 5%;
+  background-color: #4b3134;
+  color: white;
+  z-index: 100;
+  border-radius: 20px;
+}
+.warning {
+  width: 35px;
+  height: 35px;
+  fill: #eec900;
+  margin-right: 20px;
+}
+.success {
+  width: 35px;
+  height: 35px;
+  fill: #28a745;
+  margin-right: 20px;
+}
+.cumtomAlert > div > h1 {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.closeButton {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.closeButton > svg {
+  fill: #aeaeae;
+  width: 30px;
+  height: 30px;
+}
+.closeButton:hover > svg {
+  fill: #464646;
+}
+
+@keyframes AlertMove {
+  0% {
+    top: -100%; /* 화면 밖 */
+  }
+  10% {
+    top: 95px; /* 화면에 내려옴 */
+  }
+  20% {
+    top: 65px; /* 화면에 내려옴 */
+  }
+  80% {
+    top: 65px; /* 잠시 대기 */
+  }
+  90% {
+    top: 80px; /* 잠시 대기 */
+  }
+  100% {
+    top: -100%; /* 다시 화면 밖으로 올라감 */
+  }
+}
+
+.animated {
+  animation: AlertMove 2s ease;
+}
+@media (max-width: 767px) {
+  .cumtomAlert {
+    width: 80%;
+  }
+}

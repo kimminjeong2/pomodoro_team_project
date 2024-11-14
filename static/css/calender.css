@@ -1,0 +1,256 @@
+.calender > div:nth-child(1) {
+  display: flex;
+  justify-content: center;
+}
+.calender > div:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+.leftbutton {
+  background-image: url("/static/svg/arrow-left.svg");
+  background-size: 50%;
+}
+.rightbutton {
+  background-image: url("/static/svg/arrow-right.svg");
+  background-size: 50%;
+}
+#month {
+  display: block;
+  padding: 0 10px;
+  font-size: 24px;
+  line-height: 44px;
+  font-weight: 700;
+}
+#year {
+  display: block;
+  padding: 0 15px;
+  font-size: 16px;
+  line-height: 25px;
+  background-color: #4b3134;
+  color: #ffffff;
+  border-radius: 30px;
+}
+
+.calender > div:nth-child(3) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.dayContainer {
+  flex-grow: 1;
+  height: 100%;
+  width: 100vw;
+  overflow: hidden;
+}
+.dayList {
+  display: flex;
+  /* 모바일에서는 4개씩이라 4 */
+  width: calc(80vw * (31 / 4));
+  transition: transform 0.3s ease; /* 슬라이드 효과 */
+  transform: translateX(-160vw);
+}
+.dayList > .today {
+  background-color: #da2337;
+  transform: scale(1.1);
+  box-shadow: 0px 4px 4px #00000052;
+}
+
+.dayList > li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 10px 1vw;
+  transition-duration: 200ms;
+  color: white;
+  background-color: #4b3134;
+  border-radius: 15px;
+  width: 18vw;
+  height: 100px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.dayList > li > span {
+  display: block;
+  text-align: center;
+}
+.day {
+  font-size: 24px;
+}
+.date {
+  font-size: 32px;
+}
+.list-Wrap {
+  padding: 10px;
+  color: #4b3134;
+  position: relative;
+  margin-bottom: 30vh;
+}
+.todayTomato {
+  display: none;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 30px;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background-color: #ffffff;
+
+  background-image: url("/static/img/tomato.png");
+  background-repeat: no-repeat;
+  background-size: 33px;
+  background-position: 95% center;
+
+  /* display: flex; */
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20%;
+}
+.todayTomato > p {
+  font-size: 24px;
+  font-weight: 700;
+}
+.todayTomato > p > span {
+  font-size: 32px;
+  margin-left: 5px;
+}
+
+.addTodo {
+  background-image: url("/static/svg/plus-circle.svg");
+  background-size: 80%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.addList {
+  display: none;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: #ffffff;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 20px;
+  position: relative;
+  margin-bottom: 50px;
+
+  position: relative;
+  transition-duration: 300ms;
+  bottom: -100vh;
+}
+.addList > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+.addList > form > label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.addList > form > input,
+textarea,
+.modifyInput,
+.modifyTextarea {
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  height: 40px;
+  width: 90%;
+  padding-left: 15px;
+  background-color: #f0f0f0;
+}
+.modifyInput {
+  margin-bottom: 11px;
+  font-size: 15px;
+}
+.modifyTextarea {
+  font-size: 15px;
+  border-radius: 10px;
+  padding-top: 5px;
+}
+.addList > form > textarea {
+  margin-bottom: 10px;
+  height: 100px;
+  padding-top: 15px;
+}
+.addListButton {
+  align-self: center;
+}
+
+.addListClose {
+  background-image: url("/static/svg/x-circle.svg");
+  background-size: 30px;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+.todoItem {
+  transition-duration: 250ms;
+  position: relative;
+}
+.dayList > .daychar {
+  display: none;
+}
+.dayList > .emptyBlock {
+  display: none;
+}
+/* 태블릿 스타일 */
+@media screen and (min-width: 768px) {
+  header {
+    padding-left: 185px;
+  }
+  main {
+    width: calc(100% - 185px);
+    padding-left: 185px;
+  }
+  .list-Wrap {
+    max-width: 40vw;
+    margin: 0 auto;
+  }
+  .minusDays {
+    display: none;
+  }
+  .plusDays {
+    display: none;
+  }
+  .dayList > li {
+    width: 70px;
+    height: 80px;
+    margin: 0;
+    border-radius: 0;
+  }
+  .dayList {
+    transform: none;
+    width: 490px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  .dayList > li > .day {
+    display: none;
+  }
+  .dayList > li {
+    background-color: transparent;
+    /* border-bottom: 2px solid #4b3134; */
+    color: #4b3134;
+  }
+  .dayList > .today {
+    color: #ffffff;
+    border-radius: 35%;
+    transform: translateY(-10px) scale(1.1);
+  }
+  .today > .date {
+    font-size: 25px;
+  }
+  .date {
+    font-size: 20px;
+  }
+  .dayList > .daychar {
+    display: block;
+    text-align: center;
+    font-size: 25px;
+  }
+  .dayList > .emptyBlock {
+    display: block;
+  }
+}

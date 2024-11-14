@@ -1,0 +1,714 @@
+html {
+  overflow-x: hidden;
+  height: 100%;
+}
+body {
+  background-color: #fef8f1; /* #473c52 */
+  position: relative;
+  overflow-x: hidden;
+  height: 100%;
+}
+.logo {
+  position: relative;
+  z-index: 10;
+}
+
+header {
+  content: "";
+  background-color: #f2eae0;
+  position: absolute;
+  width: 100%;
+  height: 25%;
+  top: 0;
+  left: 0;
+}
+
+/* 5분타이머때 바뀌는거 */
+.spotlight {
+  background-image: url("/static/img/spotlight.png");
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  top: -18%;
+  left: 10%;
+  display: none;
+}
+
+/* overflow: hidden; */
+.timerTomato {
+  position: absolute;
+  top: 11%; /*20%*/
+  left: 50%;
+  transform: translate(-55%, 10%);
+  z-index: 2;
+  transition: transform 0.5s ease;
+}
+.hide {
+  transform: translateX(-250%); /* -250% */
+  transition: transform 0.5s ease;
+}
+
+.right {
+  position: absolute;
+  top: 23%; /* 43% */
+  right: 2%;
+  z-index: 100;
+}
+.left {
+  position: absolute;
+  top: 23%; /* 43%; */
+  left: 2%;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.timercontainer {
+  text-align: center;
+  position: absolute;
+  top: 10%; /* 20% */
+  left: 50%;
+  transform: translate(-50%, 140%);
+}
+.timer {
+  margin: 20px 0;
+  font-size: 200%;
+  color: #473234;
+}
+
+/* 5분 휴식 모달 */
+#restModal {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 35%;
+  z-index: 999;
+  border-radius: 15px;
+}
+.restmodal {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  height: 70%;
+  text-align: center;
+  align-content: center;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px 0px gray;
+}
+.restmodal h2 {
+  margin-bottom: 10%;
+  font-size: x-large;
+}
+
+.restok {
+  background-color: #da2337;
+  border-width: 0;
+  border-radius: 30px;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+  width: 120px;
+  height: 40px;
+  margin-top: 5%;
+}
+.restok:hover {
+  color: #f9f9f9;
+}
+.restend {
+  background-color: #ffffff;
+  border-color: #da2337;
+  border-width: 3px;
+  border-style: solid;
+  outline: none;
+  border-radius: 30px;
+  font-weight: 900;
+  color: #da2337;
+  text-align: center;
+  width: 120px;
+  height: 40px;
+  margin-top: 5%;
+}
+.restend:hover {
+  color: #f9f9f9;
+}
+
+/* 5분 휴식 끝 모달 */
+#restendModal {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 35%;
+  z-index: 999;
+  border-radius: 15px;
+}
+.restendmodal {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  height: 70%;
+  text-align: center;
+  align-content: center;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px 0px gray;
+}
+.restendmodal h2 {
+  margin-bottom: 10%;
+  font-size: x-large;
+}
+
+.resttheok {
+  background-color: #da2337;
+  border-width: 0;
+  border-radius: 30px;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+  width: 120px;
+  height: 40px;
+  margin-top: 5%;
+}
+.resttheok:hover {
+  color: #f9f9f9;
+}
+.resttheend {
+  background-color: #ffffff;
+  border-color: #da2337;
+  border-width: 3px;
+  border-style: solid;
+  outline: none;
+  border-radius: 30px;
+  font-weight: 900;
+  color: #da2337;
+  text-align: center;
+  width: 120px;
+  height: 40px;
+  margin-top: 5%;
+}
+.resttheend:hover {
+  color: #f9f9f9;
+}
+
+/* 완전중지 모달 */
+#stopModal {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 35%;
+  z-index: 999;
+  border-radius: 15px;
+}
+.stopmodal {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  height: 70%;
+  text-align: center;
+  align-content: center;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px 0px gray;
+}
+.stopmodal h2 {
+  margin-bottom: 10%;
+  font-size: x-large;
+}
+/*
+/* .modal p {
+  margin-bottom: 20%;
+} */
+.stopok {
+  background-color: #da2337;
+  border-width: 0;
+  border-radius: 30px;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+  width: 120px;
+  height: 40px;
+  margin-top: 5%;
+}
+.stopok:hover {
+  color: #f9f9f9;
+}
+.stopend {
+  background-color: #ffffff;
+  border-color: #da2337;
+  border-width: 3px;
+  border-style: solid;
+  outline: none;
+  border-radius: 30px;
+  font-weight: 900;
+  color: #da2337;
+  text-align: center;
+  width: 120px;
+  height: 40px;
+  margin-top: 5%;
+}
+.stopend:hover {
+  color: #f9f9f9;
+}
+/* 완전 완료 모달 */
+#doneModal {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 35%;
+  z-index: 999;
+  border-radius: 15px;
+}
+.donemodal {
+  position: absolute;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  height: 210%;
+  text-align: center;
+  align-content: center;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px 0px gray;
+}
+.donemodal > h2 {
+  margin-bottom: 10%;
+  font-size: x-large;
+}
+.todayresult {
+  margin-top: 30px;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20%;
+  font-weight: 700;
+  font-size: 15px;
+}
+.improvement {
+  margin-top: 30px;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20%;
+  font-weight: 700;
+  font-size: 15px;
+}
+.RemainingWork {
+  margin-top: 30px;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20%;
+  font-weight: 700;
+  font-size: 15px;
+}
+.donedone {
+  background-color: #da2337;
+  border-width: 0;
+  border-radius: 30px;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+  width: 120px;
+  height: 40px;
+  margin-top: -3%;
+}
+.donedone:hover {
+  color: #f9f9f9;
+}
+
+/* 캘린더에서 추가한거 */
+.buttonbox {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: center;
+}
+
+/* 그냥타이머 */
+/* 타이머 외곽 컨테이너 */
+.outer-timer-container {
+  color: rgb(50, 50, 50);
+  background-color: #fff;
+  font-family: "Roboto", sans-serif;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 20%;
+  border: 10px solid rgb(55, 55, 55);
+  box-shadow: inset 0 0 3px 3px rgba(50, 50, 50, 0.3),
+    inset 0 0 1px 2px rgba(50, 50, 50, 0.2);
+  position: absolute;
+  right: 0;
+  transform: translate(100%, 50%);
+  z-index: 2;
+  transition: transform 0.5s ease;
+}
+.outer-timer-container.active {
+  transform: translate(-76%, 50%);
+  transition: transform 0.5s ease;
+}
+
+/* 타이머 본체 */
+.timer-body {
+  position: relative;
+  font-size: 12px;
+  width: 110px;
+  height: 110px;
+}
+
+/* 눈금 */
+.tick {
+  width: 100%;
+  height: 1px;
+  top: calc(50% - 1px / 2);
+  background: #000;
+  position: absolute;
+}
+
+.tick.thick-tick {
+  width: calc(100% + 0.2em);
+  left: calc(-0.2em / 2);
+  height: 2px;
+  top: calc(50% - 1px);
+}
+
+.inner-cover1 {
+  position: absolute;
+  width: calc(100% - 6%);
+  height: calc(100% - 6%);
+  left: calc(3%);
+  top: calc(3%);
+  border-radius: 50%;
+  background: #fff;
+  z-index: 1;
+}
+
+.fin {
+  position: absolute;
+  width: 1px;
+  left: calc(50% - 1px / 2);
+  height: calc(50% - 1em);
+  top: 1em;
+  background: rgb(255, 57, 50);
+  z-index: 2;
+  transform-origin: bottom;
+}
+
+.inner-cover2 {
+  position: absolute;
+  width: 12%;
+  height: 12%;
+  left: calc(50% - 6%);
+  top: calc(50% - 6%);
+  border-radius: 50%;
+  background: #fff;
+  z-index: 3;
+}
+
+.control-container {
+  margin-top: 20px;
+}
+
+#play-pause-control {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #555;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: rgb(255, 57, 50);
+}
+
+#play-pause-control:active {
+  transform: scale(0.96);
+}
+
+.stopWatch-btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+/* 태블릿 스타일 (길이는1024px기준)*/
+@media screen and (min-width: 768px) {
+  body {
+    height: 1024px;
+    overflow-y: scroll;
+  }
+  header {
+    padding-left: 185px;
+  }
+  .logo {
+    width: 40%;
+  }
+  .timerTomato {
+    left: 64%;
+  }
+  .hide {
+    transform: translateX(-300%);
+  }
+  .timercontainer {
+    left: 64%;
+    top: 12%;
+  }
+  .list-Wrap {
+    left: 13.5%;
+    bottom: 10%;
+  }
+  .left {
+    left: 25%;
+    top: 23.5%;
+  }
+  .right {
+    top: 23.5%;
+  }
+  .outer-timer-container.active {
+    transform: translate(-135%, 75%);
+  }
+  .outer-timer-container {
+    transform: translate(100%, 75%);
+  }
+  .spotlight {
+    left: 39%;
+    width: 50%;
+    top: -24%;
+  }
+  .donedone {
+    margin-top: 5%;
+  }
+  /* 5분 쉬는 모달 */
+  .restmodal {
+    width: 65%;
+    left: 67%;
+    height: 60%;
+    top: 40%;
+  }
+  /* 5분끝난 모달 */
+  .restendmodal {
+    width: 65%;
+    left: 67%;
+    height: 60%;
+    top: 40%;
+  }
+  /* 완전끝 모달 */
+  .stopmodal h2 {
+    margin-bottom: 5%;
+  }
+  .stopmodal {
+    width: 65%;
+    left: 67%;
+    height: 60%;
+  }
+  #doneModal {
+    width: 55%;
+    height: 39%;
+  }
+  .donemodal {
+    width: 80%;
+    left: 73%;
+    height: 120%;
+  }
+  .donemodal > h2 {
+    margin-bottom: 5%;
+  }
+  .timer {
+    font-size: 150%;
+  }
+  .todayresult {
+    margin-top: 20px;
+  }
+  .improvement {
+    margin-top: 20px;
+  }
+  .RemainingWork {
+    margin-top: 20px;
+  }
+}
+
+/* 노트북 스타일 (길이는 576px) */
+@media screen and (min-width: 1024px) {
+  body {
+    height: 576px;
+    overflow-y: scroll;
+  }
+  header {
+    padding-left: 185px;
+  }
+  .logo {
+    width: 30%;
+  }
+  .timerTomato {
+    left: 61%;
+  }
+  .hide {
+    transform: translateX(-400%);
+  }
+  .timercontainer {
+    left: 61%;
+  }
+  .list-Wrap {
+    left: 10%;
+    top: 10%;
+  }
+  .left {
+    left: 20%;
+    top: 22.5%;
+  }
+  .right {
+    top: 22.5%;
+  }
+  .outer-timer-container.active {
+    transform: translate(-215%, 45%);
+  }
+  .outer-timer-container {
+    transform: translate(100%, 45%);
+  }
+  .spotlight {
+    left: 35.5%;
+    top: -20%;
+  }
+  /* 5분 쉬는 모달 */
+  .restmodal {
+    width: 65%;
+    left: 63%;
+    height: 75%;
+  }
+  /* 5분끝난 모달 */
+  .restendmodal {
+    width: 65%;
+    left: 63%;
+    height: 75%;
+  }
+  /* 완전끝 모달 */
+  .stopmodal h2 {
+    margin-bottom: 5%;
+  }
+  .stopmodal {
+    left: 63%;
+    height: 70%;
+  }
+  #doneModal {
+    width: 55%;
+    height: 39%;
+  }
+  .donemodal {
+    width: 55%;
+    left: 63%;
+    height: 200%;
+  }
+  .donemodal > h2 {
+    margin-bottom: 5%;
+  }
+  .timer {
+    font-size: 150%;
+  }
+  .todayresult {
+    margin-top: 20px;
+  }
+  .improvement {
+    margin-top: 20px;
+  }
+  .RemainingWork {
+    margin-top: 20px;
+  }
+}
+/* 1440 스타일 (길이는 810px)*/
+@media screen and (min-width: 1440px) {
+  body {
+    height: 810px;
+    overflow-y: scroll;
+  }
+  header {
+    padding-left: 185px;
+  }
+  .logo {
+    width: 20%;
+  }
+  .timerTomato {
+    left: 58%;
+  }
+  .hide {
+    transform: translateX(-550%);
+  }
+  .timercontainer {
+    left: 58%;
+  }
+  .list-Wrap {
+    left: 8%;
+    top: 1%;
+  }
+  .left {
+    left: 15%;
+    top: 23.5%;
+  }
+  .right {
+    top: 23.5%;
+  }
+  .outer-timer-container.active {
+    transform: translate(-355%, 60%);
+  }
+  .outer-timer-container {
+    transform: translate(100%, 60%);
+  }
+  .spotlight {
+    left: 33%;
+    top: -27%;
+  }
+  .stopmodal {
+    left: 60%;
+  }
+  .restmodal {
+    left: 60%;
+  }
+  .donemodal {
+    width: 55%;
+    left: 63%;
+    height: 180%;
+  }
+  .restendmodal {
+    left: 60%;
+  }
+  .donedone {
+    margin-top: 10%;
+  }
+}

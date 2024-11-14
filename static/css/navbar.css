@@ -1,0 +1,149 @@
+/* 기본 모바일 스타일 */
+
+/* 폰트 설정 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+html {
+  font-family: "Noto Sans KR", serif;
+  font-weight: 500;
+  background-color: #fff8f0;
+}
+/* 최상단 로고 설정 */
+.logo {
+  display: block;
+  margin: 0 auto;
+  padding: 15px;
+  width: 158px;
+}
+nav {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+}
+.navbar {
+  height: 48px;
+  display: flex;
+  /* justify-content: space-around; */
+}
+.navbar > li {
+  flex-grow: 1;
+}
+.navbar > li > a {
+  padding: 4px;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-decoration: none;
+  color: #121212;
+  font-size: 10px;
+  text-align: center;
+}
+.navbar > li > a > svg {
+  flex-grow: 1;
+  transition-duration: 200ms;
+}
+.navbar > li > a > svg.active {
+  transform: scale(1.2) translate(0, -2px);
+}
+#user-info {
+  display: none;
+}
+.logout {
+  display: none;
+}
+/* 태블릿 스타일 */
+@media screen and (min-width: 768px) {
+  nav {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 185px;
+    padding: 50px 20px 10px;
+    box-sizing: border-box;
+
+    background-color: #f7f7f7;
+    box-shadow: 2px 0 9px #1212121c;
+  }
+  #user-info {
+    display: block;
+  }
+  #user-info img {
+    display: block;
+    margin: 0 auto 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #user-info > div {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0px 0px 14px #8f8f8f69;
+  }
+  #user-info > h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  #user-info > h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #626262;
+    margin-bottom: 30px;
+  }
+
+  .navbar {
+    display: block;
+  }
+  .navbar > li {
+    margin-bottom: 10px;
+  }
+
+  .navbar > li > a {
+    position: relative;
+    display: block;
+    background-color: #ffffff;
+    border-radius: 10px;
+    /* padding: 13px 10px; */
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 50px;
+    box-sizing: border-box;
+    line-height: 50px;
+  }
+  .navbar > li > a > svg {
+    flex-grow: 0;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .navbar > li > a > svg.active {
+    transform: scale(1.2) translateY(-50%);
+  }
+  .logout {
+    position: absolute;
+    bottom: 10px;
+  }
+}
+
+/* 데스크톱 스타일 */
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 20px;
+    /* 데스크톱 전용 스타일 */
+  }
+}

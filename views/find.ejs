@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이메일 비밀번호 찾기</title>
+
+  <link rel="stylesheet" href="/static/css/reset.css" />
+  <link rel="stylesheet" href="/static/css/find.css" />
+  <link rel="icon" href="/static/img/faviconPomo.png">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <div class="logoSz">
+    <a href="/">
+      <img style="width: 100%; height: 100%" src="../static/img/titleLogo.png" alt="" />
+    </a>
+  </div>
+
+  <div class="findD">
+    <form action="/login/find" method="POST" class="findForm">
+      <h2>사용자 정보</h2>
+      <input type="text" class="usernameId" name="usernameId" required placeholder="이름을 입력해 주세요" />
+      <span id="usernameIdError" class="error-text"></span>
+
+      <input type="number" class="phoneNumberId" name="phoneNumberId" required placeholder="전화번호를 입력해 주세요" />
+      <span id="phoneNumberIdError" class="error-text"></span>
+    </form>
+    <button class="findBt" type="button" onclick="findEmail()">
+      이메일 찾기
+    </button>
+
+    <form action="/findPw" method="POST" class="findForm">
+      <h2>비밀번호 재설정</h2>
+
+      <input type="text" class="usernamePw" name="usernamePw" required placeholder="이름을 입력해 주세요" />
+      <span id="usernamePwError" class="error-text"></span>
+
+      <input type="number" class="phoneNumberPw" name="phoneNumberPw" required placeholder="전화번호를 입력해 주세요" />
+      <span id="phoneNumberPwError" class="error-text"></span>
+
+      <input type="text" class="emailAddrPw" name="emailAddrPw" required placeholder="이메일을 입력해 주세요" />
+      <span id="emailAddrPwError" class="error-text"></span>
+
+      <!-- 팝업으로 띄워줄내용 -->
+      <!-- <input class="loginBox" type="password" id="userPw" name="userPw" required placeholder="비밀번호를 입력해 주세요">
+            <input class="loginBox" type="password" id="userPw" name="userPw" required placeholder="비밀번호를 한번 더 입력해 주세요"> -->
+    </form>
+    <button class="findBt" type="button" onclick="requestPasswordReset()">
+      비밀번호 재설정
+    </button>
+  </div>
+  <div class="isUser">
+    <p style="font-size: 11px">이미 계정이 있으신가요?</p>
+    <a class="lostEp" href="/login">로그인</a>
+  </div>
+
+  <!-- 이메일 확인 모달 창 -->
+  <div id="resultModal">
+    <div id="modalContent">
+      <div class="modalMessageBox">
+        <p id="modalMessage">이메일을 찾을 수 없습니다.</p>
+      </div>
+      <button class="modalBt" onclick="closeModal()">확인</button>
+    </div>
+  </div>
+
+  <!-- 사용자 확인 모달 창 -->
+  <div id="userFoundModal">
+    <div id="userFoundModalContent">
+      <div class="userFoundModalMessageBox">
+        <p id="userFoundModalMessage">
+          비밀번호 재설정 요청이 완료되었습니다.
+        </p>
+      </div>
+      <button class="modalBt" onclick="closeUserFoundModal()">확인</button>
+    </div>
+  </div>
+
+  <!-- 비밀번호 재설정 모달 창 -->
+  <div id="resetPasswordModal">
+    <div id="resetPasswordContent">
+      <h3>새 비밀번호 입력</h3>
+      <input type="password" id="newPassword" placeholder="새 비밀번호" required />
+      <input type="password" id="confirmPassword" placeholder="비밀번호 확인" required />
+      <div class="resetPasswordContentBtn">
+        <button class="modalBt" type="button" onclick="updatePassword()">
+          비밀번호 변경
+        </button>
+        <button class="modalOffBt" onclick="closeResetModal()">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 오류 메시지 모달 창 -->
+  <div id="errorModal">
+    <div id="errorContent">
+      <p id="errorMessage">입력 오류입니다.</p>
+      <button class="modalBt" onclick="closeErrorModal()">닫기</button>
+    </div>
+  </div>
+
+  <!-- 이메일 찾는 js -->
+  <script src="../static/js/find.js"></script>
+</body>
+
+</html>

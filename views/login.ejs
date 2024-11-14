@@ -1,0 +1,66 @@
+<!-- views/login.ejs -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+    <link rel="stylesheet" href="/static/css/reset.css" />
+    <link rel="stylesheet" href="/static/css/login.css" />
+
+    <!-- axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <div class="logoSz">
+      <a href="/">
+        <img
+          style="width: 100%; height: 100%"
+          src="../static/img/titleLogo.png"
+          alt=""
+        />
+      </a>
+    </div>
+
+    <form action="/login" method="POST" class="loginForm">
+      <input
+        type="text"
+        class="emailAddr"
+        name="emailAddr"
+        required
+        placeholder="이메일을 입력해 주세요"
+      />
+      <input
+        type="password"
+        class="password"
+        name="password"
+        required
+        placeholder="비밀번호를 입력해 주세요"
+      />
+
+      <button class="loginBt" type="button" onclick="loginUser()">
+        로그인
+      </button>
+
+      <div class="lostE">
+        <p style="font-size: 11px">email 또는 비밀번호를 잊어버리셨나요?</p>
+        <a class="lostEp" href="/login/find">email & 비밀번호 찾기</a>
+      </div>
+    </form>
+
+    <div class="newUser">
+      <p style="font-size: 11px">계정이 없으신가요?</p>
+      <a class="lostEp" href="/login/register">회원가입</a>
+    </div>
+    <!-- 로그인 모달 -->
+    <div id="loginErrorModal" class="modal">
+      <div class="modal-content">
+        <p class="modal-message"></p>
+        <button class="close-btn" onclick="closeModal()">닫기</button>
+      </div>
+    </div>
+
+    <script src="/static/js/login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+.exclamation {
+  background-image: url("/static/svg/exclamation-circle.svg");
+  background-size: 25px;
+}
+
+.modify {
+  background-image: url("/static/svg/pencil-square.svg");
+  background-size: 23px;
+}
+.modifyCompliete {
+  background-image: url("/static/svg/pencil-square-blue.svg");
+  background-size: 30px;
+}
+.delete {
+  background-image: url("/static/svg/trash3.svg");
+  background-size: 20px;
+}
+.cancle {
+  background-image: url("/static/svg/x-circle.svg");
+  background-size: 25px;
+}
+.pending {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.done {
+  background-color: #8fd9a8;
+  border-radius: 50%;
+  box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.25);
+}
+.ongoing {
+  background-color: #f1e29a;
+  border-radius: 50%;
+  box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.state {
+  width: 25px;
+  height: 25px;
+  transition-duration: 50ms;
+}
+.todoItem {
+  background-color: #ffffff;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  transform: translateX(0);
+}
+.todoItem > div {
+  line-height: 1.3;
+  align-items: center;
+}
+.todoItem > div > div {
+  margin-left: 10px;
+}
+.todoItem > div:first-child {
+  display: flex;
+}
+.todoItem > div > div > h3 {
+  font-size: 15px;
+  font-weight: 700;
+}
+.todoItem > div > div > p {
+  font-size: 12px;
+  font-weight: 500;
+}
+.buttonform {
+  display: flex;
+  align-items: center;
+}
+.modifyTextarea {
+  height: 100px;
+}
